@@ -113,7 +113,7 @@
       (declare (ignore type))
       (make-instance 'mssql-connection
                      :user (or user (getenv-default "USER"))
-                     :pass password
+                     :pass (or password (getenv-default "MSSQL_PWD"))
                      :host (or host (getenv-default "TDSHOST" "localhost"))
                      :port (or port (parse-integer
                                      (getenv-default "TDSPORT" "1433")))
